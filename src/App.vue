@@ -20,21 +20,25 @@ export default {
     return {
       survey: Object,
       answers: {},
-      rating: Object
+      rating: Object,
     }
   },
   methods: {
     async getReport() {
-      console.log('click')
-      const id = uuid.create()
+      const id = uuid.create();
 
-      console.log(`https://mango-meadow-01b737303.azurestaticapps.net/api/surveys/${id}`)
+      const res_survey = await axios.get(`/api/surveys/${id}`);
+      this.survey = res_survey.data;
 
-      this.survey = await axios.get(`https://mango-meadow-01b737303.azurestaticapps.net/api/surveys/${id}`)
+      const res_answers = await axios.get(`/api/surveys/${id}/responses/${id}`);
+      this.answers = res_answers.data;
+
+      const res_rating = await axios.get(`/api/surveys/${id}/responses/${id}/scores`);
+      this.rating = res_rating.data;
     }
   },
-  async created() {
-
+  created() {
+    /*
     this.survey = {
       "survey": {
         "name": "Hest International Survey",
@@ -49,7 +53,6 @@ export default {
         "anonymous": true
       }
     }
-
 
     this.rating = {
       "score": "2.71",
@@ -156,7 +159,8 @@ export default {
             "value": 5
           }
         }]
-    }
+      }
+      */
   }
 }
 </script>
