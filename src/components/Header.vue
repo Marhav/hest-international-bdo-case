@@ -4,7 +4,7 @@
     <h1>{{ checkName() }}</h1>
     <h3>{{ checkDate() }}</h3>
     <div>
-      <Button @btn-click="$emit('get-report')" /><Loader v-show="loading" />
+      <Button @btn-click="$emit('get-report')" /><Loader v-show="loading_visible" />
     </div>
   </header>
 </template>
@@ -18,7 +18,7 @@ export default {
   name: "Header",
   props: {
     survey: Object,
-    loading: Boolean,
+    loading_visible: Boolean,
   },
   components: {
     Button,

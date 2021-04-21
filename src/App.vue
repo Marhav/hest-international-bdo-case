@@ -1,6 +1,6 @@
 <template>
-  <Header @get-report="getReport" :survey="survey.survey" :loading="loading"/>
-  <Report :rating="rating" :answers="answers" />
+  <Header @get-report="getReport" :survey="survey.survey" :loading_visible="loading_visible"/>
+  <Report :rating="rating" :answers="answers" v-show="report_visible"/>
 </template>
 
 <script>
@@ -21,14 +21,15 @@ export default {
       survey: {},
       answers: {},
       rating: {},
-      loading: false,
+      loading_visible: false,
+      report_visible: false,
     }
   },
   methods: {
     async getReport() {
       const id = uuid.create();
 
-      this.loading = true;
+      this.loading_visible = true;
       try{
         const res_survey = await axios.get(`/api/surveys/${id}`);
         this.survey = res_survey.data;
@@ -41,8 +42,14 @@ export default {
       } catch (e) {
         console.error(e)
       }
-      this.loading = false;
-    }
+      this.loading_visible = false;
+      this.reportVisible()
+    },
+    reportVisible() {
+      if (!this.survey.name){
+        this.report_visible = true;
+      } else this.report_visible = false;
+    },
   },
 }
 </script>
