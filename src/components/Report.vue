@@ -25,6 +25,7 @@ export default {
 .report{
   background: #f4f4f4;
   margin: 5px;
+  margin-top: 30px;
   padding: 10px 20px;
   border-radius: 10px;
 }
