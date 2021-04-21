@@ -1,5 +1,5 @@
 <template>
-  <Header @get-report="getReport" :survey="survey.survey"/>
+  <Header @get-report="getReport" :survey="survey.survey" :loading="loading"/>
   <Report :rating="rating" :answers="answers" />
 </template>
 
@@ -21,20 +21,27 @@ export default {
       survey: {},
       answers: {},
       rating: {},
+      loading: false,
     }
   },
   methods: {
     async getReport() {
       const id = uuid.create();
 
-      const res_survey = await axios.get(`/api/surveys/${id}`);
-      this.survey = res_survey.data;
+      this.loading = true;
+      try{
+        const res_survey = await axios.get(`/api/surveys/${id}`);
+        this.survey = res_survey.data;
 
-      const res_answers = await axios.get(`/api/surveys/${id}/responses/${id}`);
-      this.answers = res_answers.data;
+        const res_answers = await axios.get(`/api/surveys/${id}/responses/${id}`);
+        this.answers = res_answers.data;
 
-      const res_rating = await axios.get(`/api/surveys/${id}/responses/${id}/scores`);
-      this.rating = res_rating.data;
+        const res_rating = await axios.get(`/api/surveys/${id}/responses/${id}/scores`);
+        this.rating = res_rating.data;
+      } catch (e) {
+        console.error(e)
+      }
+      this.loading = false;
     }
   },
 }

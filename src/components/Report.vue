@@ -1,6 +1,6 @@
 <template>
   <div class="report">
-    <p><strong>Results:</strong> {{ rating.score }}, {{ rating.rating }}</p>
+    <p><strong>Results:</strong> {{ rating.score }}, {{ rating.rating }} {{getEmoji()}}</p>
     <h2>Answers:</h2>
     <Answers :answers="answers.answers" />
   </div>
@@ -18,6 +18,25 @@ export default {
     rating: Object,
     answers: {},
   },
+  methods: {
+    getEmoji() {
+      if (!this.rating.score) {
+        return ''
+      }
+
+      if (this.rating.score > 4){
+        return '🤗'
+      } else if (this.rating.score > 3){
+        return '😏'
+      } else if (this.rating.score > 2){
+        return '🤔'
+      } else if (this.rating.score > 1){
+        return '😢'
+      } else {
+        return '😭'
+      }
+    }
+  }
 }
 </script>
 

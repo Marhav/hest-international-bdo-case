@@ -3,21 +3,26 @@
     <img class="logoImg" :src="checkLogoImg()" alt="">
     <h1>{{ checkName() }}</h1>
     <h3>{{ checkDate() }}</h3>
-    <Button @btn-click="$emit('get-report')" />
+    <div>
+      <Button @btn-click="$emit('get-report')" /><Loader v-show="loading" />
+    </div>
   </header>
 </template>
 
 <script>
 import Button from "@/components/Button";
+import Loader from "@/components/Loader";
 
 
 export default {
   name: "Header",
   props: {
-    survey: Object
+    survey: Object,
+    loading: Boolean,
   },
   components: {
-    Button
+    Button,
+    Loader,
   },
   methods: {
     checkName() {
@@ -77,8 +82,5 @@ export default {
 .logoImg{
   width: 15%;
   height: 15%;
-}
-button{
-  
 }
 </style>
