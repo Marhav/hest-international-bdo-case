@@ -1,10 +1,13 @@
 <template>
-  <Header :survey="report.survey" title="Hest International Survey" />
-  <Report :report="report"/>
+  <Header @get-report="getReport" :survey="survey.survey"/>
+  <Report :rating="rating" :answers="answers" />
 </template>
 
 <script>
-import Header from './components/Header'
+const uuid = require('uuid-js')
+import axios from "axios"
+
+import Header from "@/components/Header";
 import Report from "@/components/Report";
 
 export default {
@@ -15,14 +18,24 @@ export default {
   },
   data() {
     return {
-      report: Object
+      survey: Object,
+      answers: {},
+      rating: Object
     }
   },
   methods: {
+    async getReport() {
+      console.log('click')
+      const id = uuid.create()
 
+      console.log(`https://mango-meadow-01b737303.azurestaticapps.net/api/surveys/${id}`)
+
+      this.survey = await axios.get(`https://mango-meadow-01b737303.azurestaticapps.net/api/surveys/${id}`)
+    }
   },
-  created() {
-    this.report = {
+  async created() {
+
+    this.survey = {
       "survey": {
         "name": "Hest International Survey",
         "slug": "hest-international-survey",
@@ -34,7 +47,16 @@ export default {
         "startDate": "2021-03-21T11:47:40.630Z",
         "endDate": "2021-05-21T11:47:40.630Z",
         "anonymous": true
-      },
+      }
+    }
+
+
+    this.rating = {
+      "score": "2.71",
+      "rating": "Passable"
+    }
+
+    this.answers = {
       "answers": [
         {
           "questionText": "Horse Racing is important for my day",
@@ -133,9 +155,7 @@ export default {
             "text": "It is a vital part of my day",
             "value": 5
           }
-        }],
-        "score": "2.71",
-        "rating": "Passable"
+        }]
     }
   }
 }
@@ -151,8 +171,6 @@ export default {
   margin-top: 60px;
 }
 </style>
-
-
 
 
 /*

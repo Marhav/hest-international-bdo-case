@@ -1,10 +1,8 @@
 <template>
   <div class="report">
-    <p><strong>Results:</strong> {{ report.score }}, {{ report.rating }}</p>
-    <p></p>
-    <p></p>
+    <p><strong>Results:</strong> {{ rating.score }}, {{ rating.rating }}</p>
     <h2>Answers:</h2>
-    <Answers :answers="report.answers" />
+    <Answers :answers="answers.answers" />
   </div>
 </template>
 
@@ -17,7 +15,8 @@ export default {
     Answers
   },
   props: {
-    report: Object
+    rating: Object,
+    answers: {},
   },
 }
 </script>

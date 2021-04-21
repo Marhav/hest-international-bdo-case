@@ -3,18 +3,21 @@
     <img class="logoImg" :src="survey.logoImage" alt="">
     <h1>{{ survey.name }}</h1>
     <h3>{{ survey.endDate }}</h3>
+    <Button @btn-click="$emit('get-report')" />
   </header>
 </template>
 
 <script>
-//const uuid = require('uuid-js')
-//import axios from "axios"
+import Button from "@/components/Button";
 
 
 export default {
   name: "Header",
   props: {
     survey: Object
+  },
+  components: {
+    Button
   },
   methods: {
 
@@ -27,5 +30,4 @@ export default {
   width: 15%;
   height: 15%;
 }
-
 </style>
