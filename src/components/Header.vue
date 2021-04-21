@@ -38,38 +38,39 @@ export default {
     checkDate(){
       if (!this.survey){
         return '';
-      } else return this.formatMonth(this.survey.endDate)
+      } else return "Expires: " + this.formatDate(this.survey.endDate)
     },
-    formatMonth(date) {
+    formatDate(date) {
 
-      const separated_date = date.split("-");
+      const separated_date = date.split(/([-,T,])/);
 
-      const month = separated_date[1];
+      const month = separated_date[2];
+      const day = separated_date[4]
 
       if(month == "01"){
-        return "January";
+        return day + ". January";
       } else if (month == "02"){
-        return "February"
+        return day + ". February"
       } else if (month == "03"){
-        return "March"
+        return day + ". March"
       } else if (month == "04"){
-        return "April"
+        return day + ". April"
       } else if (month == "05"){
-        return "May"
+        return day + ". May"
       } else if (month == "06"){
-        return "June"
+        return day + ". June"
       } else if (month == "07"){
-        return "July"
+        return day + ". July"
       } else if (month == "08"){
-        return "August"
+        return day + ". August"
       } else if (month == "09"){
-        return "September"
+        return day + ". September"
       } else if (month == "10"){
-        return "October"
+        return day + ". October"
       } else if (month == "11"){
-        return "November"
+        return day + ". November"
       } else if (month == "12"){
-        return "December"
+        return day + ". December"
       } else {
         console.log("Ugyldig måned: " + separated_date);
       }
