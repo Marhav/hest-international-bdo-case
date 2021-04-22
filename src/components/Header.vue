@@ -59,40 +59,11 @@ export default {
       } return '';
     },
     //Formats the date from input and return day and month
-    formatDate(date) {
+    formatDate(input) {
 
-      const separated_date = date.split(/([-,T,])/);
+      const date = new Date(input);
 
-      const month = separated_date[2];
-      const day = separated_date[4]
-
-      if(month == "01"){
-        return day + ". January";
-      } else if (month == "02"){
-        return day + ". February"
-      } else if (month == "03"){
-        return day + ". March"
-      } else if (month == "04"){
-        return day + ". April"
-      } else if (month == "05"){
-        return day + ". May"
-      } else if (month == "06"){
-        return day + ". June"
-      } else if (month == "07"){
-        return day + ". July"
-      } else if (month == "08"){
-        return day + ". August"
-      } else if (month == "09"){
-        return day + ". September"
-      } else if (month == "10"){
-        return day + ". October"
-      } else if (month == "11"){
-        return day + ". November"
-      } else if (month == "12"){
-        return day + ". December"
-      } else {
-        console.error("Ugyldig måned: " + separated_date);
-      }
+      return date.toLocaleDateString('no', {day: 'numeric', month: 'long'})
     },
   },
 }

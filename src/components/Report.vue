@@ -37,9 +37,8 @@ export default {
       if (this.rating.score > 1){
         return '😢';
       }
-      else {
-        return '😭';
-      }
+      return '😭';
+
     }
   }
 }
