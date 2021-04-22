@@ -10,7 +10,8 @@
       </div>
     </div>
     <div>
-      <Button @btn-click="$emit('get-report')" /><Loader v-show="loading_visible" />
+      <Button @btn-click="$emit('get-report')" />
+      <Loader v-show="loading_visible" />
     </div>
   </header>
 </template>
@@ -31,31 +32,33 @@ export default {
     Loader,
   },
   methods: {
+    //Below is different check methods used to check if variables has something to display.
     checkIfReport() {
       if (this.survey){
         return true;
-      } else return false;
+      } return false;
     },
     checkName() {
-      if (!this.survey){
-        return 'Survey Reports';
-      } else return this.survey.name;
+      if (this.survey){
+        return this.survey.name;
+      } return 'Survey Reports';
     },
     checkLogoImg() {
-      if (!this.survey){
-        return '';
-      } else return this.survey.logoImage;
+      if (this.survey){
+        return this.survey.logoImage;
+      } return '';
     },
     checkDate(){
-      if (!this.survey){
-        return '';
-      } else return "Expires: " + this.formatDate(this.survey.endDate)
+      if (this.survey){
+        return "Expires: " + this.formatDate(this.survey.endDate);
+      } return '';
     },
     checkBackground() {
       if (this.survey){
         return this.survey.backgroundImage
-      } else return '';
+      } return '';
     },
+    //Formats the date from input and return day and month
     formatDate(date) {
 
       const separated_date = date.split(/([-,T,])/);

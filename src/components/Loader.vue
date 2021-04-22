@@ -1,3 +1,4 @@
+<!-- Code form: https://loading.io/css/ -->
 <template>
   <div class="lds-dual-ring"></div>
 </template>

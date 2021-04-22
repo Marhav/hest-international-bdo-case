@@ -19,21 +19,26 @@ export default {
     answers: {},
   },
   methods: {
+    //Get an emoji based on rating
     getEmoji() {
       if (!this.rating.score) {
-        return ''
+        return '';
       }
 
       if (this.rating.score > 4){
-        return '🤗'
-      } else if (this.rating.score > 3){
-        return '😏'
-      } else if (this.rating.score > 2){
-        return '🤔'
-      } else if (this.rating.score > 1){
-        return '😢'
-      } else {
-        return '😭'
+        return '🤗';
+      }
+      if (this.rating.score > 3){
+        return '😏';
+      }
+      if (this.rating.score > 2){
+        return '🤔';
+      }
+      if (this.rating.score > 1){
+        return '😢';
+      }
+      else {
+        return '😭';
       }
     }
   }

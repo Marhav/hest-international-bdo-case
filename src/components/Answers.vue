@@ -24,5 +24,4 @@ export default {
 .answers{
   text-align: left;
 }
-
 </style>

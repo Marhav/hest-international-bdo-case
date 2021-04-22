@@ -1,5 +1,5 @@
 <template>
-  <Header @get-report="getReport" :survey="survey.survey" :loading_visible="loading_visible"/>
+  <Header @get-report="getNewReport" :survey="survey.survey" :loading_visible="loading_visible"/>
   <Report :rating="rating" :answers="answers" v-show="report_visible"/>
 </template>
 
@@ -26,7 +26,8 @@ export default {
     }
   },
   methods: {
-    async getReport() {
+    //Gets a new report from server and instantiates variables
+    async getNewReport() {
       const id = uuid.create();
 
       this.loading_visible = true;
@@ -45,6 +46,7 @@ export default {
       this.loading_visible = false;
       this.reportVisible()
     },
+    //Used to change the value of report_visible based on if there reports to be shown.
     reportVisible() {
       if (!this.survey.name){
         this.report_visible = true;
