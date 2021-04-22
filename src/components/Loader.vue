@@ -10,3 +10,10 @@ export default {
   name: "Loader"
 }
 </script>
+
+<style scoped>
+.btn{
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+</style>

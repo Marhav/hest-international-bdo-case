@@ -1,12 +1,12 @@
 <template>
-  <header class="backgroundImg" :style="{'background-image': `url(${checkBackground()})`}">
-    <img class="logoImg" :src="checkLogoImg()" alt="">
+  <header class="backgroundImg" :style="{'background-image': `url(${returnBackground()})`}">
+    <img class="logoImg" :src="returnLogoImg()" alt="">
     <div class="container">
       <div :class="[checkIfReport() ? 'contrast_background' : '']">
-        <h1>{{ checkName() }}</h1>
+        <h1>{{ returnName() }}</h1>
       </div><br>
       <div :class="[checkIfReport() ? 'contrast_background' : '']">
-        <h3>{{ checkDate() }}</h3>
+        <h6>{{ returnDate() }}</h6>
       </div>
     </div>
     <div>
@@ -38,24 +38,24 @@ export default {
         return true;
       } return false;
     },
-    checkName() {
+    returnName() {
       if (this.survey){
         return this.survey.name;
       } return 'Survey Reports';
     },
-    checkLogoImg() {
+    returnLogoImg() {
       if (this.survey){
         return this.survey.logoImage;
       } return '';
     },
-    checkDate(){
-      if (this.survey){
-        return "Expires: " + this.formatDate(this.survey.endDate);
-      } return '';
-    },
-    checkBackground() {
+    returnBackground() {
       if (this.survey){
         return this.survey.backgroundImage
+      } return '';
+    },
+    returnDate(){
+      if (this.survey){
+        return "Expires: " + this.formatDate(this.survey.endDate);
       } return '';
     },
     //Formats the date from input and return day and month
@@ -73,26 +73,27 @@ export default {
 .logoImg{
   width: 8%;
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 15px;
+  left: 15px;
 }
 
 .backgroundImg{
   background-size: cover;
   background-position: 50% 20%;
-  padding-top: 60px;
-  padding-bottom: 40px;
+  padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 .contrast_background{
-  background: rgba(0, 0, 0, 0.7);
-  color: #f4f4f4;
+  background-color: #f4f4f4;
   width: fit-content;
   display: inline-block;
   padding-top: 7px;
   padding-right: 15px;
   padding-left: 15px;
-  margin-bottom: 15px;
+  margin-top: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
   border-radius: 3px;
 }
 

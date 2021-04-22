@@ -12,7 +12,7 @@ import Answer from "@/components/Answer";
 export default {
   name: "Answers",
   props: {
-    answers: {}
+    answers: Array
   },
   components: {
     Answer

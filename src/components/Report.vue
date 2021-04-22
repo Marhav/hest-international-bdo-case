@@ -4,7 +4,7 @@
       <p><strong>Results:</strong> {{ rating.score }}, {{ rating.rating }} {{getEmoji()}}</p>
       <h2>Answers:</h2>
       <hr>
-      <Answers :answers="answers.answers" />
+      <Answers :answers="answers" />
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
   },
   props: {
     rating: Object,
-    answers: {},
+    answers: Array,
   },
   methods: {
     //Get an emoji based on rating

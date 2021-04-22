@@ -1,6 +1,6 @@
 <template>
   <Header @get-report="getNewReport" :survey="survey.survey" :loading_visible="loading_visible"/>
-  <Report :rating="rating" :answers="answers" v-show="report_visible"/>
+  <Report :rating="rating" :answers="answers.answers" v-show="report_visible"/>
 </template>
 
 <script>
