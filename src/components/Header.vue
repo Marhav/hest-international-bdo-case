@@ -2,10 +2,10 @@
   <header class="backgroundImg" :style="{'background-image': `url(${checkBackground()})`}">
     <img class="logoImg" :src="checkLogoImg()" alt="">
     <div class="container">
-      <div class="contrast_background">
+      <div :class="[checkIfReport() ? 'contrast_background' : '']">
         <h1>{{ checkName() }}</h1>
       </div><br>
-      <div class="contrast_background">
+      <div :class="[checkIfReport() ? 'contrast_background' : '']">
         <h3>{{ checkDate() }}</h3>
       </div>
     </div>
@@ -31,6 +31,11 @@ export default {
     Loader,
   },
   methods: {
+    checkIfReport() {
+      if (this.survey){
+        return true;
+      } else return false;
+    },
     checkName() {
       if (!this.survey){
         return 'Survey Reports';
@@ -45,6 +50,11 @@ export default {
       if (!this.survey){
         return '';
       } else return "Expires: " + this.formatDate(this.survey.endDate)
+    },
+    checkBackground() {
+      if (this.survey){
+        return this.survey.backgroundImage
+      } else return '';
     },
     formatDate(date) {
 
@@ -81,18 +91,13 @@ export default {
         console.error("Ugyldig måned: " + separated_date);
       }
     },
-    checkBackground() {
-      if (this.survey){
-        return this.survey.backgroundImage
-      } else return '';
-    }
   },
 }
 </script>
 
 <style scoped>
 .logoImg{
-  width: 7%;
+  width: 10%;
   position: absolute;
   top: 20px;
   left: 20px;
@@ -100,7 +105,7 @@ export default {
 
 .backgroundImg{
   background-size: cover;
-  padding-top: 50px;
+  padding-top: 60px;
   padding-bottom: 20px;
   border-radius: 10px;
 }
