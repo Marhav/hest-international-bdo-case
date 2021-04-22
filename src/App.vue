@@ -61,19 +61,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
-
-
-/*
-const id = uuid.create();
-try{
-const res = await axios.get(`https://mango-meadow-01b737303.azurestaticapps.net/api/surveys/${id}`)
-
-this.survey = res.name
-} catch (e) {
-console.log(e)
-}
-
-*/

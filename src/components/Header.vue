@@ -1,8 +1,14 @@
 <template>
-  <header>
+  <header class="backgroundImg" :style="{'background-image': `url(${checkBackground()})`}">
     <img class="logoImg" :src="checkLogoImg()" alt="">
-    <h1>{{ checkName() }}</h1>
-    <h3>{{ checkDate() }}</h3>
+    <div class="container">
+      <div class="contrast_background">
+        <h1>{{ checkName() }}</h1>
+      </div><br>
+      <div class="contrast_background">
+        <h3>{{ checkDate() }}</h3>
+      </div>
+    </div>
     <div>
       <Button @btn-click="$emit('get-report')" /><Loader v-show="loading_visible" />
     </div>
@@ -27,12 +33,12 @@ export default {
   methods: {
     checkName() {
       if (!this.survey){
-        return 'Hest International Survey';
+        return 'Survey Reports';
       } else return this.survey.name;
     },
     checkLogoImg() {
       if (!this.survey){
-        return 'https://i.imgur.com/DiyCbNA.png';
+        return '';
       } else return this.survey.logoImage;
     },
     checkDate(){
@@ -72,8 +78,13 @@ export default {
       } else if (month == "12"){
         return day + ". December"
       } else {
-        console.log("Ugyldig måned: " + separated_date);
+        console.error("Ugyldig måned: " + separated_date);
       }
+    },
+    checkBackground() {
+      if (this.survey){
+        return this.survey.backgroundImage
+      } else return '';
     }
   },
 }
@@ -81,7 +92,31 @@ export default {
 
 <style scoped>
 .logoImg{
-  width: 15%;
-  height: 15%;
+  width: 7%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.backgroundImg{
+  background-size: cover;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+}
+
+.contrast_background{
+  background: rgba(0, 0, 0, 0.7);
+  color: azure;
+  width: fit-content;
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+}
+
+.container{
+  text-align: center;
 }
 </style>

@@ -43,8 +43,8 @@ export default {
 <style scoped>
 .report{
   background: #f4f4f4;
-  margin: 5px;
-  margin-top: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding: 10px 20px;
   border-radius: 10px;
 }
