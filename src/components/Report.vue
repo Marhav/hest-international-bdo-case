@@ -1,8 +1,11 @@
 <template>
-  <div class="report">
-    <p><strong>Results:</strong> {{ rating.score }}, {{ rating.rating }} {{getEmoji()}}</p>
-    <h2>Answers:</h2>
-    <Answers :answers="answers.answers" />
+  <div class="container">
+    <div class="report">
+      <p><strong>Results:</strong> {{ rating.score }}, {{ rating.rating }} {{getEmoji()}}</p>
+      <h2>Answers:</h2>
+      <hr>
+      <Answers :answers="answers.answers" />
+    </div>
   </div>
 </template>
 
@@ -24,7 +27,6 @@ export default {
       if (!this.rating.score) {
         return '';
       }
-
       if (this.rating.score > 4){
         return '🤗';
       }
@@ -45,11 +47,15 @@ export default {
 </script>
 
 <style scoped>
+.container{
+  text-align: center;
+}
 .report{
   background: #f4f4f4;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 10px;
   padding: 10px 20px;
   border-radius: 10px;
+  max-width: 1000px;
+  display: inline-block;
 }
 </style>

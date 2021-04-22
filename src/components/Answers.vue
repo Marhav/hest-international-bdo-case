@@ -2,7 +2,7 @@
 <div class="answers" :key="answer.questionText" v-for="answer in answers">
   <p><strong>Question: </strong>{{ answer.questionText }}</p>
   <Answer :answer="answer.answer" />
-  <br>
+  <hr>
 </div>
 </template>
 

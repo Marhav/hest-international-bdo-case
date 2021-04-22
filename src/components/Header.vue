@@ -10,7 +10,7 @@
       </div>
     </div>
     <div>
-      <Button @btn-click="$emit('get-report')" />
+      <Button v-show="!loading_visible" @btn-click="$emit('get-report')" />
       <Loader v-show="loading_visible" />
     </div>
   </header>
@@ -71,7 +71,7 @@ export default {
 
 <style scoped>
 .logoImg{
-  width: 10%;
+  width: 8%;
   position: absolute;
   top: 20px;
   left: 20px;
@@ -79,18 +79,19 @@ export default {
 
 .backgroundImg{
   background-size: cover;
+  background-position: 50% 20%;
   padding-top: 60px;
-  padding-bottom: 20px;
-  border-radius: 10px;
+  padding-bottom: 40px;
 }
 
 .contrast_background{
   background: rgba(0, 0, 0, 0.7);
-  color: azure;
+  color: #f4f4f4;
   width: fit-content;
   display: inline-block;
-  padding-right: 5px;
-  padding-left: 5px;
+  padding-top: 7px;
+  padding-right: 15px;
+  padding-left: 15px;
   margin-bottom: 15px;
   border-radius: 3px;
 }
