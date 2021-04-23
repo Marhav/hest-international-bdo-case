@@ -1,12 +1,12 @@
 <template>
-  <header class="backgroundImg" :style="{'background-image': `url(${returnBackground()})`}">
-    <img class="logoImg" :src="returnLogoImg()" alt="">
+  <header class="backgroundImg" :style="{'background-image': `url(${getBackground()})`}">
+    <img class="logoImg" :src="getLogoImg()" alt="">
     <div class="container">
       <div :class="[checkIfReport() ? 'contrast_background' : '']">
-        <h1>{{ returnName() }}</h1>
+        <h1>{{ getName() }}</h1>
       </div><br>
       <div :class="[checkIfReport() ? 'contrast_background' : '']">
-        <h6>{{ returnDate() }}</h6>
+        <h6>{{ getDate() }}</h6>
       </div>
     </div>
     <div>
@@ -32,28 +32,28 @@ export default {
     Loader,
   },
   methods: {
-    //Below is different check methods used to check if variables has something to display.
+    //Below is methods used to check whether variables has something to display or not.
     checkIfReport() {
       if (this.survey){
         return true;
       } return false;
     },
-    returnName() {
+    getName() {
       if (this.survey){
         return this.survey.name;
       } return 'Survey Reports';
     },
-    returnLogoImg() {
+    getLogoImg() {
       if (this.survey){
         return this.survey.logoImage;
       } return '';
     },
-    returnBackground() {
+    getBackground() {
       if (this.survey){
         return this.survey.backgroundImage
       } return '';
     },
-    returnDate(){
+    getDate(){
       if (this.survey){
         return "Expires: " + this.formatDate(this.survey.endDate);
       } return '';
